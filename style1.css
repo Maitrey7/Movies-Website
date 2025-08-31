@@ -1,0 +1,169 @@
+/* Basic reset & fonts */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  color: #222;
+  background: linear-gradient(120deg, #e0f7fa, #e8eaf6);
+  transition: background 0.6s ease;
+}
+
+/* Header / Hero */
+.hero {
+  text-align: center;
+  padding: 64px 16px 32px;
+}
+.hero h1 { margin: 0 0 8px; font-size: 2.25rem; }
+.tagline { opacity: 0.8; margin-bottom: 16px; }
+.btn {
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #222;
+  color: #fff;
+  font-weight: 600;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.btn:hover { transform: translateY(-2px); opacity: 0.9; }
+
+/* Movie grid */
+.movies {
+  width: min(1100px, 95%);
+  margin: 0 auto 64px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  padding: 0 8px;
+}
+
+/* Light mode card */
+.card {
+  background: #f9f5ff; /* soft lavender (change to any color you like) */
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  transform: translateY(12px);
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+
+/* Dark mode card (already present, keep this separate) */
+.dark .card {
+  background: #0e1420; /* dark gray for dark mode */
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+.card:hover {
+  transform: translateY(0);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+}
+.card img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+  transition: transform 300ms ease;
+}
+.card:hover img { transform: scale(1.03); }
+.content { padding: 14px 16px 18px; }
+.content h2 { margin: 8px 0 6px; font-size: 1.15rem; }
+.content p { margin: 0 0 10px; opacity: 0.9; line-height: 1.4; }
+
+/* Light mode description box */
+.content {
+  background: #53d7e0;   /* pastel peach */
+  padding: 14px 16px 18px;
+  border-top: 2px solid #eaff00;
+  border-radius: 0 0 16px 16px; /* rounded bottom only */
+}
+
+/* Dark mode description box */
+.dark .content {
+  background: #b419bc;   /* dark gray */
+  border-top: 2px solid #26ad1c;
+}
+
+/* Star rating */
+.stars {
+  font-size: 20px;
+  user-select: none;
+  letter-spacing: 2px;
+}
+.stars span {
+  filter: grayscale(1);
+  opacity: 0.45;
+  cursor: pointer;
+  transition: transform 150ms ease, opacity 150ms ease, filter 150ms ease;
+  display: inline-block;
+}
+.stars span.active {
+  filter: none;
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 32px 12px 48px;
+  opacity: 0.8;
+}
+
+/* Section titles */
+.section-title {
+  text-align: center;
+  font-size: 1.8rem;
+  margin: 40px 0 20px;
+  color: #222;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+.dark .section-title {
+  color: #eee;
+}
+.section-subtitle {
+  text-align: center;
+  font-size: 1rem;
+  margin: -10px 0 25px;
+  color: #555;
+  opacity: 0.85;
+}
+.dark .section-subtitle {
+  color: #ccc;
+}
+
+/* Badge / Tag Styling */
+.badge {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #fca5a5, #ef4444); /* soft red to deep red */
+  color: white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  letter-spacing: 0.5px;
+}
+
+.dark .badge {
+  background: linear-gradient(135deg, #22d3ee, #3b82f6); /* cyan-blue gradient in dark mode */
+}
+
+
+/* Simple animations */
+.fade-in {
+  animation: fadeInUp 700ms ease both;
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Dark theme (toggled by JS) */
+.dark {
+  color: #eee;
+  background: linear-gradient(120deg, #0f172a, #1f2937);
+}
+.dark .card { background: #111827; box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+.dark .content p { opacity: 0.9; }
+.dark .btn { background: #e5e7eb; color: #111; }
+.dark .footer { opacity: 0.85; }
